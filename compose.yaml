@@ -1,0 +1,17 @@
+name: knapsack-by-simulated-annealing
+
+services:
+  dbpostgres:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: product
+  knapsack-service:
+    image: 'knapsack-by-simulated-annealing:latest'
+    build:
+      context: .
+    container_name: knapsack-service
